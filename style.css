@@ -1,0 +1,481 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* TOPO */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    background: black;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.nav_itens{
+    display: flex;
+    align-items: center;
+}
+.nav_itens a{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding-right: 2rem;
+}
+.nav_itens ul{
+    list-style-type: none;
+}
+
+#ti1{
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 5rem;
+}
+
+/* HAMBURGER */
+.nav_hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1.5rem;
+    z-index: 100;
+}
+
+.nav_hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.35s ease, width 0.35s ease;
+    transform-origin: center;
+}
+
+.nav_hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav_hamburger.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.nav_hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MEIO */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*Centraliza verticalmente */
+    /*align-items: center;  Centraliza horizontalmente */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url("img/IMG_3365.webp");
+    background-size: cover;
+    background-position: center 35%;
+    /*background-attachment: fixed;*/
+    height: 100vh; /* Oq eu queria */
+}
+ 
+#main1{
+    margin-top: -10rem;
+    margin-left: 5rem;
+    padding-bottom: 10px;
+    color: #047cbd;
+}
+#main2{
+    margin-left: 5rem;
+    font-size: 3.5rem;
+    max-width: 65%;
+    padding-bottom: 10px;
+    color: white;
+}
+#main3{
+    margin-left: 5rem;
+    max-width: 50%;
+    font-size: 16px;
+    color: #047cbd;
+}
+
+/*Seviços*/
+#Serviços{
+    background: black;
+}
+#list1{
+    font-size: 2rem;
+    padding: 7rem;
+    color: white;
+}
+
+.serviços-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 5rem;
+}
+
+.serviço-top {
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 12px;
+    padding: 2rem;
+    color: white;
+    transition: border-color 0.5s ease, background 0.5s ease;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    color: rgb(175, 174, 174);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+    margin-top: 0;
+}
+
+.serviço-top:hover {
+    border-color: rgb(0, 140, 255);
+    background: rgba(0, 140, 255, 0.05);
+}
+
+.serviço-top:hover .description {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 0.75rem;
+    transition: 0.5s;
+}
+
+
+/*Contatos*/
+#contatos{
+    padding: 4rem;
+    font-size: 27px;
+    color: white;
+}
+#contatos a{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5rem;
+    padding-left: 5rem;
+    font-size: 24px;
+}
+
+.Icones{
+    height: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.Icones:hover{
+    transform: scale(1.3);
+}
+
+/* Footer */
+footer{
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+/* ======================== */
+/* ANIMAÇÕES DOM-STYLE      */
+/* ======================== */
+
+/* --- Palavra rotativa no hero --- */
+.palavra-rotativa-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1.2em;
+    line-height: 1.2em;
+}
+
+.palavra-rotativa {
+    display: flex;
+    flex-direction: column;
+    animation: rotaciona-palavra 8s cubic-bezier(0.77, 0, 0.18, 1) infinite;
+}
+
+.palavra-rotativa span {
+    display: block;
+    height: 1.2em;
+    line-height: 1.2em;
+    color: #047cbd;
+    white-space: nowrap;
+}
+
+@keyframes rotaciona-palavra {
+    0%   { transform: translateY(0); }
+    18%  { transform: translateY(0); }
+    25%  { transform: translateY(-20%); }
+    43%  { transform: translateY(-20%); }
+    50%  { transform: translateY(-40%); }
+    68%  { transform: translateY(-40%); }
+    75%  { transform: translateY(-60%); }
+    93%  { transform: translateY(-60%); }
+    100% { transform: translateY(-80%); }
+}
+
+/* --- Faixa marquee deslizante --- */
+.marquee-strip {
+    background: #047cbd;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.75rem 0;
+}
+
+.marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: marquee-slide 22s linear infinite;
+    white-space: nowrap;
+}
+
+.marquee-track span {
+    color: white;
+    font-size: 0.95rem;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.marquee-dot {
+    color: rgba(255,255,255,0.6) !important;
+    font-size: 0.65rem !important;
+}
+
+@keyframes marquee-slide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* --- Fade + slide ao rolar (scroll reveal) --- */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.scroll-reveal.visible {
+    animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.serviço-top:nth-child(1).scroll-reveal { animation-delay: 0s;   }
+.serviço-top:nth-child(2).scroll-reveal { animation-delay: 0.1s; }
+.serviço-top:nth-child(3).scroll-reveal { animation-delay: 0.2s; }
+.serviço-top:nth-child(4).scroll-reveal { animation-delay: 0.3s; }
+.serviço-top:nth-child(5).scroll-reveal { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .palavra-rotativa { animation: none; }
+    .marquee-track    { animation: none; }
+    .scroll-reveal    { opacity: 1; transform: none; animation: none !important; }
+}
+
+/* ======================== */
+/* RESPONSIVIDADE           */
+/* ======================== */
+
+/* Tablet grande */
+@media screen and (max-width: 1024px) {
+    #ti1 {
+        padding: 1.5rem 2rem;
+        font-size: 1rem;
+    }
+
+    #main1 { margin-left: 3rem; }
+    #main2 { margin-left: 3rem; max-width: 85%; font-size: 3rem; }
+    #main3 { margin-left: 3rem; max-width: 70%; }
+
+    .serviços-grid { padding: 2rem 3rem; }
+    #list1 { padding: 4rem 3rem 2rem; }
+    #contatos { padding: 3rem; }
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+    #ti1 {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .nav_itens a {
+        padding-right: 1rem;
+        font-size: 0.85rem;
+    }
+
+    main {
+        padding: 4rem 1.5rem 2rem;
+        min-height: 100svh;
+    }
+
+    #main1 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+    #main2 { margin-left: 0; max-width: 100%; font-size: 2.2rem; }
+    #main3 { margin-left: 0; max-width: 100%; font-size: 1rem; }
+
+    #list1 { padding: 3rem 1.5rem 1.5rem; font-size: 1.6rem; }
+    .serviços-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+
+    #contatos { padding: 3rem 1.5rem; }
+    #contatos p { font-size: 1.4rem; }
+
+    footer {
+        font-size: 0.88rem;
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        gap: 0;
+        position: relative;
+    }
+
+    #ti1 {
+        padding: 0;
+        font-size: 0.85rem;
+        white-space: normal;
+        flex: 1;
+    }
+
+    .nav_hamburger {
+        display: flex;
+    }
+
+    .nav_itens {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav_itens.open {
+        max-height: 200px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav_itens ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0 1rem;
+        gap: 0.25rem;
+    }
+
+    .nav_itens a {
+        display: block;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding-right: 0;
+    }
+
+    main {
+        padding: 5rem 1.25rem 2rem;
+        max-height: 300px;
+    }
+
+    #main1 { margin-top: -10rem; font-size: 0.9rem; }
+    #main2 { margin-left: 0; max-width: 100%; font-size: clamp(1.6rem, 7vw, 2.5rem); }
+    #main3 { margin-left: 0; max-width: 100%; font-size: 0.95rem; }
+
+    #list1 { padding: 2.5rem 1.25rem 1rem; font-size: 1.4rem; }
+
+    .serviços-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .serviço-top {
+        padding: 1.5rem;
+    }
+
+    /* No mobile, description fica sempre visível */
+    .description {
+        max-height: none;
+        opacity: 1;
+        margin-top: 0.6rem;
+    }
+
+    #contatos { padding: 2.5rem 1.25rem; }
+    #contatos p { font-size: 1.3rem; margin-bottom: 1.2rem; }
+
+    .contatos-links {
+        flex-direction: column;
+    }
+
+    #contatos a {
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 1.25rem 1rem;
+        word-break: break-word;
+    }
+}
+
+/* Mobile muito pequeno */
+@media screen and (max-width: 380px) {
+    #ti1 { font-size: 0.78rem; }
+    .nav_itens a { font-size: 0.75rem; padding-right: 0.5rem; }
+    #main1 { font-size: 0.5;}
+    #main2 { font-size: 1.5rem; }
+    #main3 { font-size: 0.8rem;}
+    .serviço-top { padding: 1.25rem; }
+
+    footer {
+        font-size: 0.72rem;
+        padding: 1rem 0.75rem;
+    }
+}
+
+
+
+
+
+
